@@ -8,11 +8,11 @@
           <ion-list inset>
             
             <ion-item>
-              <ion-input type="text" placeholder="Email" name="email"></ion-input> 
+              <ion-input type="text" placeholder="Email" name="email" [(ngModel)]="creds.email"></ion-input> 
             </ion-item>
             <br>
             <ion-item>
-              <ion-input type="password" placeholder="Senha" name="password"></ion-input>
+              <ion-input type="password" placeholder="Senha" name="senha" [(ngModel)]="creds.senha"></ion-input>
             </ion-item>
             
           </ion-list>
