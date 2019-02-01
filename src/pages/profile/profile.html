@@ -11,5 +11,9 @@
   <ion-fab left bottom menuToggle>
     <button ion-fab><ion-icon name="menu"></ion-icon></button>
   </ion-fab>
-  {{ email }}
+  <ion-avatar>
+    <img class="circle" [src]="cliente?.imageUrl || 'assets/imgs/avatar-blank.png'"> 
+  </ion-avatar>
+  <h2 text-center>{{cliente?.nome}}</h2>
+  <p text-center>{{cliente?.email}}</p>
 </ion-content>
