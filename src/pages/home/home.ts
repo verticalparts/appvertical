@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, IonicPage, MenuController, AlertController } from 'ionic-angular';
 import { CredenciaisDTO } from '../../models/credenciais.dto';
+import { AuthService } from '../../services/domain/auth.service';
 
 @IonicPage()
 @Component({
@@ -14,18 +15,22 @@ export class HomePage {
     senha: ""
   }
 
-  constructor(public navCtrl: NavController, public menu: MenuController, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public menu: MenuController, public alertCtrl: AlertController, public auth: AuthService) {
 
   }
 
   login(){
-    console.log(this.creds);
-    this.navCtrl.setRoot("Menu2Page");
+    this.auth.authenticate(this.creds)
+      .subscribe(response => {
+        console.log(response.headers.get('Authorization'));
+        this.navCtrl.setRoot("Menu2Page");
+      },
+      error => {})
+    
   }
 
   noAccount(){
     this.navCtrl.setRoot("Menu2Page");
-
     let alert =  this.alertCtrl.create({
       title: 'Aviso!',
       subTitle: 'Você só poderá solicitar orçamentos se estiver logado em um conta.',
