@@ -1,0 +1,26 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
+    <ion-title>Seleção de menus</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-slides pager="true">
+        <ion-slide>
+          <h1>Peças</h1>
+          <button ion-button (click)='goCategoria()' color="dark" clear>Ver mais</button>
+        </ion-slide>
+        <ion-slide>
+          <h1>Documentos</h1>
+          <button ion-button color="dark" clear>Ver mais</button>
+        </ion-slide>
+        <ion-slide>
+          <h1>Serviços</h1>
+          <button ion-button color="dark" clear>Ver mais</button>
+        </ion-slide>
+      </ion-slides>
+</ion-content>

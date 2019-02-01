@@ -13,7 +13,7 @@ export class HomePage {
   }
 
   login(){
-    this.navCtrl.setRoot("CategoriasPage");
+    this.navCtrl.setRoot("Menu2Page");
   }
 
   ionViewWillEnter(){
