@@ -23,11 +23,14 @@
         <ion-col class="signup-col">
           <button ion-button class="submit-btn" color="light" full outline type="submit" (click)="login()">Login</button>
             <button ion-button class="register-btn" block clear small>Registrar nova conta</button>
-            <button ion-button class="register-btn" block clear small>Entrar sem conta</button>
+            <button ion-button class="register-btn" block clear small (click)="noAccount()">Entrar sem conta</button>
         </ion-col>
       </ion-row>
       
     </form>
   </div>
+  <ion-footer>
+      <h3>Todos os direitos reservados a Vertical Parts ©</h3>
+  </ion-footer>
 
 </ion-content>
