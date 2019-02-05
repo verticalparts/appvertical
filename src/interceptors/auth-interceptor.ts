@@ -27,7 +27,7 @@ export class AuthInterceptor implements HttpInterceptor {
     }
 }
 
-export const ErrorInterceptorProvider = {
+export const AuthInterceptorProvider = {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true,
