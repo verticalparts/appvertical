@@ -29,6 +29,10 @@ export class HomePage {
     
   }
 
+  signup(){
+    this.navCtrl.push("SignupPage");
+  }
+
   noAccount(){
     this.navCtrl.setRoot("Menu2Page");
     let alert =  this.alertCtrl.create({
