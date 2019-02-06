@@ -33,11 +33,15 @@ export class ProdutosPage {
   loadImageUrls() {
     for (var i=0; i<this.items.length; i++) {
       let item = this.items[i];
-      this.produtoService.getSmallImageFromBucket(item.id)
+      this.produtoService.getImageFromBucket(item.id)
         .subscribe(response => {
           item.imageUrl = `${API_CONFIG.bucketProdUrl}/VPER-${item.id}.png`;
         },
         error => {});
     }
-  }  
+  } 
+
+  showDetails(produto_id : string){
+    this.navCtrl.push('DetalhesPage', {produto_id: produto_id});
+  }
 }

@@ -8,8 +8,11 @@
 </ion-header>
 
 <ion-content padding>
+    <ion-fab left bottom menuToggle>
+        <button ion-fab><ion-icon name="menu"></ion-icon></button>
+    </ion-fab>
   <ion-list>
-    <button ion-item *ngFor="let item of items">
+    <button ion-item *ngFor="let item of items" (click)="showDetails(item.id)">
       <ion-thumbnail item-start>
         <img [src]="item.imageUrl">
       </ion-thumbnail>
