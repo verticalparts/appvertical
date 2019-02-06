@@ -37,7 +37,7 @@ export class HomePage {
     this.navCtrl.setRoot("Menu2Page");
     let alert =  this.alertCtrl.create({
       title: 'Aviso!',
-      subTitle: 'Você só poderá solicitar orçamentos se estiver logado em um conta.',
+      subTitle: 'Você só poderá solicitar orçamentos se estiver logado em uma conta.',
       buttons: ['Entendi']
     });
     return alert.present();

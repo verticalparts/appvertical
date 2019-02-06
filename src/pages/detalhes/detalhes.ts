@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { ProdutoDTO } from '../../models/produto.dto';
 import { ProdutoService } from '../../services/domain/produto.service';
 import { API_CONFIG } from '../../config/api.config';
 import { CartService } from '../../services/domain/cart.service';
+import { StorageService } from '../../services/storage_service';
+import { ClienteDTO } from '../../models/cliente.dto';
+import { ClienteService } from '../../services/domain/cliente.service';
 
 @IonicPage()
 @Component({
@@ -13,8 +16,14 @@ import { CartService } from '../../services/domain/cart.service';
 export class DetalhesPage {
 
   item: ProdutoDTO;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, public produtoService: ProdutoService, public cartService: CartService) {
+  cliente: ClienteDTO;
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public produtoService: ProdutoService,
+              public cartService: CartService, 
+              public storage: StorageService, 
+              public clienteService: ClienteService,
+              public alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
@@ -37,7 +46,38 @@ export class DetalhesPage {
 
   addToCart(produto: ProdutoDTO){
     this.cartService.addProduto(produto);
-    this.navCtrl.setRoot('CartPage');
+    let localUser = this.storage.getLocalUser();
+    if(localUser && localUser.email){
+      this.clienteService.findByEmail(localUser.email)
+       .subscribe(response => {
+         this.cliente = response;
+         this.navCtrl.setRoot('CartPage');
+       },
+       error => {
+         if (error.status == 403) {
+           console.log(error);
+         }
+       });
+   }
+   else {
+    let alert =  this.alertCtrl.create({
+      title: 'Aviso!',
+      subTitle: 'Você só poderá solicitar orçamentos se estiver logado em uma conta.',
+      buttons: [{
+        text: 'Ver mais produtos',
+        handler: () => {
+          this.navCtrl.setRoot('CategoriasPage');
+        }
+      },
+      {
+        text: 'Fazer login',
+        handler: () => {
+          this.navCtrl.setRoot('HomePage');
+        }
+      }]
+    });
+    return alert.present();
+  }
   }
 
 }
