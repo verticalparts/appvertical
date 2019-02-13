@@ -26,4 +26,8 @@ export class Menu2Page {
     this.navCtrl.push("CategoriasPage");
   }
 
+  goDocumentos(){
+    this.navCtrl.push("DocumentosPage");
+  }
+
 }

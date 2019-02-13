@@ -1,24 +1,37 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
     <ion-title>Produtos</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-    <ion-fab left bottom menuToggle>
-        <button ion-fab><ion-icon name="menu"></ion-icon></button>
-    </ion-fab>
+    <ion-searchbar (ionInput)="getProdutos($event)"></ion-searchbar>
+
+    <button ion-button class="filter" (click)="getFilter()" small outline color="dark">
+      Filtrar
+    </button>
+
+    <ion-fab left bottom>
+        <button ion-fab color="light"><ion-icon name="menu"></ion-icon></button>
+        <ion-fab-list side="right">
+          <button ion-fab (click)="goToProfile()"><ion-icon name="people"></ion-icon></button>
+          <button ion-fab (click)="goToSections()"><ion-icon name="albums"></ion-icon></button>
+          <button ion-fab (click)="goToCategory()"><ion-icon name="construct"></ion-icon></button>
+          <button ion-fab (click)="goToCart()"><ion-icon name="cart"></ion-icon></button>
+          <button ion-fab (click)="logout()"><ion-icon name="exit"></ion-icon></button>
+        </ion-fab-list>
+      </ion-fab><!-- FAB com Menu em ícones -->
+
   <ion-list>
     <button ion-item *ngFor="let item of items" (click)="showDetails(item.id)">
-      <ion-thumbnail item-start>
-        <img [src]="item.imageUrl">
+      <ion-thumbnail item-end>
+        <img [src]="item.imageUrl || 'assets/imgs/mini.png'">
       </ion-thumbnail>
-      <h2>{{item.nome}}</h2>
-      <p>{{item.vper}}</p>
-      <p>{{item.marca}}</p>
+      <div class="paragrafo">
+        <h2>{{item.nome}}</h2>
+        <p>{{item.vper}}</p>
+        <p>{{item.marca}}</p>
+      </div>
     </button>
   </ion-list>
 </ion-content>

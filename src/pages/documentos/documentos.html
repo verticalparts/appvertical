@@ -1,0 +1,29 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Documentos</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-fab left bottom>
+        <button ion-fab color="light"><ion-icon name="menu"></ion-icon></button>
+      <ion-fab-list side="right">
+          <button ion-fab (click)="goToProfile()"><ion-icon name="people"></ion-icon></button>
+          <button ion-fab (click)="goToSections()"><ion-icon name="albums"></ion-icon></button>
+          <button ion-fab (click)="goToCategory()"><ion-icon name="construct"></ion-icon></button>
+          <button ion-fab (click)="goToCart()"><ion-icon name="cart"></ion-icon></button>
+          <button ion-fab (click)="logout()"><ion-icon name="exit"></ion-icon></button>
+      </ion-fab-list>
+    </ion-fab><!-- FAB com Menu em ícones -->
+
+  <ion-card>
+      <img src="assets/imgs/pdf.png"/>
+  <ion-card-content>
+    <h2>Catálogo - Vertical Parts</h2>
+    <button ion-button full (click)="openDoc()">Abrir</button>
+  </ion-card-content>
+</ion-card>
+</ion-content>

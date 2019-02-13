@@ -44,6 +44,7 @@ export class DetalhesPage {
       error => {});
   }
 
+  /* O Sistema só adiciona o item ao carrinho de compras caso o usuário esteja logado */ 
   addToCart(produto: ProdutoDTO){
     this.cartService.addProduto(produto);
     let localUser = this.storage.getLocalUser();
@@ -64,9 +65,9 @@ export class DetalhesPage {
       title: 'Aviso!',
       subTitle: 'Você só poderá solicitar orçamentos se estiver logado em uma conta.',
       buttons: [{
-        text: 'Ver mais produtos',
+        text: 'Cancelar',
         handler: () => {
-          this.navCtrl.setRoot('CategoriasPage');
+          
         }
       },
       {

@@ -7,15 +7,24 @@ import { MyApp } from './app.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { CategoriaService } from '../services/domain/categoria.service';
+
 import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
+import { AuthInterceptorProvider } from '../interceptors/auth-interceptor';
+
+import { CategoriaService } from '../services/domain/categoria.service';
 import { AuthService } from '../services/auth.service';
 import { StorageService } from '../services/storage_service';
 import { ClienteService } from '../services/domain/cliente.service';
-import { AuthInterceptorProvider } from '../interceptors/auth-interceptor';
 import { EstadoService } from '../services/domain/estado.service';
 import { ProdutoService } from '../services/domain/produto.service';
 import { CartService } from '../services/domain/cart.service';
+
+import { File } from '@ionic-native/file';
+import { DocumentViewer } from '@ionic-native/document-viewer';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { FileOpener } from '@ionic-native/file-opener';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +51,13 @@ import { CartService } from '../services/domain/cart.service';
     ClienteService,
     EstadoService,
     ProdutoService,
-    CartService
+    CartService,
+    File,
+    FileOpener,
+    DocumentViewer,
+    FileTransfer,
+    InAppBrowser
   ]
 })
 export class AppModule {}
+

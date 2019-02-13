@@ -1,0 +1,39 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Filtro</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list>
+        <ion-item>
+          <ion-label>Marca</ion-label>
+          <ion-select>
+            <ion-option value="OTIS">OTIS</ion-option>
+            <ion-option value="Schindler">Schindler</ion-option>
+            <ion-option value="Thyssenkrupp">Thyssenkrupp</ion-option>
+            <ion-option value="LG">LG</ion-option>
+            <ion-option value="Mitsubishi">Mitsubishi</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>Modelo</ion-label>
+            <ion-select [(ngModel)]="marca">
+              <ion-option value="OTIS">OTIS</ion-option>
+              <ion-option value="Schindler">Schindler</ion-option>
+              <ion-option value="Thyssenkrupp">Thyssenkrupp</ion-option>
+              <ion-option value="LG">LG</ion-option>
+              <ion-option value="Mitsubishi">Mitsubishi</ion-option>
+            </ion-select>
+          </ion-item>
+      </ion-list>
+
+  <ion-footer>
+    <button ion-button full (click)="filter()">Filtrar</button>
+    <button ion-button full (click)="backFilter()">Voltar</button>
+  </ion-footer>
+
+</ion-content>
