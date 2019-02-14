@@ -1,9 +1,50 @@
 page-menu2 {
 
-    h1{
-        text-decoration: overline;
-        text-transform: uppercase;
-        font-size: 35px;
+    @font-face {
+        font-family: Axis;
+        src: url(../fonts/axis.otf)
     }
+    
+    h1{
+        font-family: Axis;
+        text-transform: uppercase;
+        font-size: 45px;
+        color: white;
+        text-shadow: 2px 2px #000000;
+    }
+    
+    .slide1{
+        background-image: url('../assets/imgs/escalator2.gif');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        background-size: 200% 100%;
+    }
+
+    .slide2{
+        background-image: url('../assets/imgs/escalator3.gif');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        background-size: 200% 100%;
+    }
+
+    .slide3{
+        background-image: url('../assets/imgs/escalator4.gif');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        background-size: 200% 100%;
+    }
+
+    .swiper-pagination-bullet {
+        background: rgb(0, 0, 0);
+        opacity: 0.5;
+      }
+    
+      .swiper-pagination-bullet-active {
+        opacity: 1;
+        background: #fdd000;
+      }
     
 }

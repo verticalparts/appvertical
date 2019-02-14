@@ -13,12 +13,14 @@ import { API_CONFIG } from '../../config/api.config';
 export class ProfilePage {
 
   cliente: ClienteDTO;
+  perfil: string;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public storage: StorageService,
     public clienteService: ClienteService,
     public menu: MenuController) {
+      this.perfil = "info";
   }
 
   ionViewDidLoad() {

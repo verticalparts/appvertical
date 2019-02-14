@@ -17,10 +17,9 @@ import { ClienteService } from '../../services/domain/cliente.service';
 export class ProdutosPage {
 
   items: ProdutoDTO[];
+  itemTodos: ProdutoDTO[];
   categorias: CategoriaDTO[];
   cliente: ClienteDTO;
-  testRadioOpen: boolean;
-  testRadioResult: any;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams, 
@@ -123,5 +122,6 @@ export class ProdutosPage {
       const modal = this.modalCtrl.create("ModalPage");
       modal.present();
     }
- 
-}
+
+  
+  }

@@ -1,13 +1,8 @@
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Perfil</ion-title>
-  </ion-navbar>
-
 </ion-header>
 
-
-<ion-content padding>
+<ion-content>
 
     <ion-fab left bottom>
         <button ion-fab color="light"><ion-icon name="menu"></ion-icon></button>
@@ -18,10 +13,42 @@
           <button ion-fab (click)="logout()"><ion-icon name="exit"></ion-icon></button>
         </ion-fab-list>
       </ion-fab><!-- FAB com Menu em ícones -->
+  <div class="bg">
+    <ion-avatar>
+      <img class="circle" [src]="cliente?.imageUrl || 'assets/imgs/avatar-blank.png'"> 
+    </ion-avatar>
+    <h2 text-center class="nome">{{cliente?.nome}}</h2>
+    <br>
+    <!--<p text-center>{{cliente?.email}}</p>-->
+  </div>
+
+  <div>
+      <ion-segment [(ngModel)]="perfil" color="dark">
+        <ion-segment-button value="info" checked>
+          Informações
+        </ion-segment-button>
+        <ion-segment-button value="pedidos">
+          Pedidos
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+    
+    <div [ngSwitch]="perfil">
       
-  <ion-avatar>
-    <img class="circle" [src]="cliente?.imageUrl || 'assets/imgs/avatar-blank.png'"> 
-  </ion-avatar>
-  <h2 text-center>{{cliente?.nome}}</h2>
-  <p text-center>{{cliente?.email}}</p>
+        <ion-list *ngSwitchCase="'info'">
+          <ion-item>
+            <p>Nome</p>
+            <h2>{{ cliente?.nome }}</h2>
+            <hr>
+            <p>Email</p>
+            <h2>{{ cliente?.email }}</h2>
+          </ion-item>
+        </ion-list>
+      
+        <ion-list *ngSwitchCase="'pedidos'">
+          <ion-item>
+            <h2>Pedidos</h2>
+          </ion-item>
+        </ion-list>
+      </div>
 </ion-content>

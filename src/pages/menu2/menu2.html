@@ -10,19 +10,19 @@
 </ion-header>
 
 
-<ion-content padding>
-    <ion-slides pager="true">
-        <ion-slide>
-          <h1>Peças</h1>
-          <button ion-button (click)='goCategoria()' color="dark" clear>Ver mais</button>
-        </ion-slide>
-        <ion-slide>
+<ion-content>
+    <ion-slides pager>
+        <ion-slide class="slide1">
+            <h1>Peças</h1>
+            <button ion-button (click)='goCategoria()' color="light" clear full>Ver mais</button>
+        </ion-slide> 
+        <ion-slide class="slide2">
           <h1>Documentos</h1>
-          <button ion-button (click)="goDocumentos()" color="dark" clear>Ver mais</button>
+          <button ion-button (click)="goDocumentos()" color="light" clear full>Ver mais</button>
         </ion-slide>
-        <ion-slide>
+        <ion-slide class="slide3">
           <h1>Serviços</h1>
-          <button ion-button color="dark" clear>Ver mais</button>
+          <button ion-button color="light" clear full>Ver mais</button>
         </ion-slide>
       </ion-slides>
 </ion-content>

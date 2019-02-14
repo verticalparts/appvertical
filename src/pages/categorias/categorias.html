@@ -1,14 +1,14 @@
 <ion-header>
 
 
-  <ion-navbar>
+  <ion-navbar *navbar>
     <ion-title>Categorias</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
 
     <!--<ion-fab left bottom menuToggle>
         <button ion-fab><ion-icon name="menu"></ion-icon></button>
@@ -24,12 +24,11 @@
         </ion-fab-list>
       </ion-fab><!-- FAB com Menu em ícones -->
       
-   <ion-list>
-     <button ion-item *ngFor="let item of items" (click)="showProdutos(item.id)">
-       <ion-thumbnail item-start>
-         <img src="{{bucketUrl}}/cat{{item.id}}.jpg">
-       </ion-thumbnail>
-       <h2> {{ item.nome }} </h2>
-     </button>
-   </ion-list>
+   <div>
+      <button *ngFor="let item of items" (click)="showProdutos(item.id)" no-padding>
+         <img src="{{bucketUrl}}/c{{item.id}}.jpg">
+      </button>
+   </div>
 </ion-content>
+
+

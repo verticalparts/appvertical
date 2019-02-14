@@ -14,3 +14,24 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.profile{
+    height: 40px;
+}
+
+.logo-menu{
+    position: relative;
+    top: 30%;
+    padding-bottom: 20px;
+    width: 80%;
+    left: 10%;
+}
+
+.menu{
+    background-color: rgb(48, 48, 48) !important;
+}
+
+.btn{
+    color: #fff !important;
+    background-color: transparent !important;
+}
