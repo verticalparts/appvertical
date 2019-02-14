@@ -46,7 +46,12 @@ export class CartPage {
   decreaseQuantity(produto: ProdutoDTO) {
     this.items = this.cartService.decreaseQuantity(produto).items;
   }
+
   goOn() {
     this.navCtrl.setRoot('CategoriasPage');
+  }
+
+  checkout() {
+    this.navCtrl.push('EnderecoPage');
   }
 }

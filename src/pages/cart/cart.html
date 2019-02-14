@@ -21,5 +21,8 @@
       <ion-icon name="trash" item-end  color="danger" (click)="removeItem(item.produto)"></ion-icon>
       </ion-item>
     </ion-list>
-    <button ion-button block (click)="goOn()">Continuar comprando</button>     
+    <ion-footer>
+      <button ion-button block (click)="goOn()">Continuar comprando</button>   
+      <button ion-button color="secondary" block (click)="checkout()">Finalizar pedido</button>   
+    </ion-footer> 
   </ion-content>
