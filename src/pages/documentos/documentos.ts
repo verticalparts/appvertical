@@ -42,7 +42,39 @@ export class DocumentosPage {
   }
 
   goToProfile(){
-    this.navCtrl.setRoot("ProfilePage");
+    let localUser = this.storage.getLocalUser();
+  if(localUser && localUser.email){
+    this.clienteService.findByEmail(localUser.email)
+     .subscribe(response => {
+       this.cliente = response as ClienteDTO;
+       this.navCtrl.setRoot("ProfilePage");
+     },
+     error => {
+       if (error.status == 403) {
+         console.log(error);
+       }
+     });
+ }
+ else {
+  let alert =  this.alertCtrl.create({
+    title: 'Aviso!',
+    subTitle: 'Entre com uma conta para acessar seu perfil!',
+    buttons: [{
+      text: 'Cancelar',
+      handler: () => {
+        
+      }
+    },
+    {
+      text: 'Fazer login',
+      handler: () => {
+        this.navCtrl.setRoot('HomePage');
+      }
+    }]
+  });
+  return alert.present();
+}
+    
   }
 
   goToSections(){
@@ -59,7 +91,6 @@ export class DocumentosPage {
   if(localUser && localUser.email){
     this.clienteService.findByEmail(localUser.email)
      .subscribe(response => {
-       this.cliente = response as ClienteDTO;
        this.navCtrl.push('CartPage');
      },
      error => {

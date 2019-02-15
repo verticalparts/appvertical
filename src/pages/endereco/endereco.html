@@ -15,7 +15,7 @@
     <ion-list-header>
       Selecione um endereço
     </ion-list-header>
-    <button ion-item *ngFor="let item of items" (click)="nextPage(item)">
+    <button ion-item *ngFor="let item of items" (click)="nextPage(item); $event.preventDefault()">
       <h2>{{ item.logradouro }}, {{ item.numero }}</h2>
       <p>{{ item.complemento }} <br> {{ item.bairro }} <br> CEP: {{ item.cep }}</p>
     </button>

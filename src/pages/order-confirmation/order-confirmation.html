@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Confira seu pedido</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card>
+    <ion-card-header>
+      Itens do pedido
+    </ion-card-header>
+
+    <ion-list>
+      <ion-item *ngFor="let item of cartItems">
+        <ion-thumbnail item-start>
+          <img [src]="item.produto.imageUrl || 'assets/imgs/prod.jpg'">
+        </ion-thumbnail>
+        <p><small>{{item.produto.vper}}</small></p>
+        <h2><b>{{item.produto.nome}}</b></h2>
+        <p><small>Quantidade</small></p>
+        <p class="nolinebreak">{{item.quantidade}}</p>
+      </ion-item> 
+    </ion-list> 
+  </ion-card>
+
+  <ion-card>
+      <ion-card-header>
+        Cliente
+      </ion-card-header>
+      <ion-item>
+        <p>Nome</p>
+        <h2>{{cliente?.nome}}</h2>
+        <br>
+        <p>Email</p>
+        <h2>{{cliente?.email}}</h2>
+      </ion-item>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      Endereço de entrega
+    </ion-card-header>
+
+    <ion-item>
+      <p>Rua</p>
+        <h2>{{endereco?.logradouro}}, {{endereco?.numero}}</h2>
+        <br>
+      <p>Complemento</p>
+        <h2>{{endereco?.complemento}}</h2>
+        <br>
+      <p>Bairro</p>
+        <h2>{{endereco?.bairro}}</h2>
+        <br>
+      <p>CEP</p>
+        <h2>{{endereco?.cep}}</h2>
+    </ion-item>
+  </ion-card>
+</ion-content>

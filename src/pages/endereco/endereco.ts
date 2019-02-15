@@ -22,6 +22,7 @@ export class EnderecoPage {
               public storage: StorageService,
               public clienteService: ClienteService,
               public cartService: CartService) {
+                
   }
 
   ionViewDidLoad() {
@@ -52,7 +53,7 @@ export class EnderecoPage {
 
   nextPage(item: EnderecoDTO){
     this.pedido.enderecoDeEntrega = {id: item.id};
-    this.navCtrl.push('ConfirmPage', {pedido: this.pedido});
+    this.navCtrl.setRoot('OrderConfirmationPage', {pedido: this.pedido});
   }
 
 }
