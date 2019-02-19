@@ -25,6 +25,9 @@ import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-nati
 import { FileOpener } from '@ionic-native/file-opener';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 
+import { BrMaskerModule } from 'brmasker-ionic-3';
+
+import { CallNumber } from '@ionic-native/call-number';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
   imports: [
     BrowserModule,
     HttpClientModule,
-    IonicModule.forRoot(MyApp),
+    BrMaskerModule,
+    IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -56,7 +60,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     FileOpener,
     DocumentViewer,
     FileTransfer,
-    InAppBrowser
+    InAppBrowser,
+    CallNumber
   ]
 })
 export class AppModule {}

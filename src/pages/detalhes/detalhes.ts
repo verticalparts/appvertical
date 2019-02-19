@@ -7,6 +7,7 @@ import { CartService } from '../../services/domain/cart.service';
 import { StorageService } from '../../services/storage_service';
 import { ClienteDTO } from '../../models/cliente.dto';
 import { ClienteService } from '../../services/domain/cliente.service';
+import { CallNumber } from '@ionic-native/call-number';
 
 @IonicPage()
 @Component({
@@ -23,7 +24,8 @@ export class DetalhesPage {
               public cartService: CartService, 
               public storage: StorageService, 
               public clienteService: ClienteService,
-              public alertCtrl: AlertController) {
+              public alertCtrl: AlertController,
+              public callNumber: CallNumber) {
   }
 
   ionViewDidLoad() {
@@ -79,6 +81,12 @@ export class DetalhesPage {
     });
     return alert.present();
   }
+}
+
+  call(){
+    this.callNumber.callNumber("+5511969122684", true)
+      .then(res => console.log('Launched dialer!', res))
+      .catch(err => console.log('Error launching dialer', err));
   }
 
 }

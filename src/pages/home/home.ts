@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, IonicPage, MenuController, AlertController } from 'ionic-angular';
+import { NavController, IonicPage, MenuController, AlertController} from 'ionic-angular';
 import { CredenciaisDTO } from '../../models/credenciais.dto';
 import { AuthService } from '../../services/auth.service';
 
@@ -15,7 +15,10 @@ export class HomePage {
     senha: ""
   }
 
-  constructor(public navCtrl: NavController, public menu: MenuController, public alertCtrl: AlertController, public auth: AuthService) {
+  constructor(public navCtrl: NavController, 
+              public menu: MenuController, 
+              public alertCtrl: AlertController, 
+              public auth: AuthService) {
 
   }
 

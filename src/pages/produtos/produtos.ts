@@ -17,7 +17,6 @@ import { ClienteService } from '../../services/domain/cliente.service';
 export class ProdutosPage {
 
   items: ProdutoDTO[];
-  itemTodos: ProdutoDTO[];
   categorias: CategoriaDTO[];
   cliente: ClienteDTO;
 
