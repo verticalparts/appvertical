@@ -5,10 +5,11 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-searchbar (ionInput)="getProdutos($event)"></ion-searchbar>
 
-    <button ion-button class="filter" (click)="getFilter()" small outline color="dark">
-      Filtrar
+    <ion-searchbar placeholder="Pesquisar..." (ionInput)="getProdutos($event)"></ion-searchbar>
+
+    <button ion-button class="refresher" (click)="doRefresh()" small outline color="dark">
+        Recarregar
     </button>
 
     <ion-fab left bottom>
@@ -34,4 +35,9 @@
       </div>
     </button>
   </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+   
 </ion-content>

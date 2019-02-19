@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { CategoriaService } from '../../services/domain/categoria.service';
 import { CategoriaDTO } from '../../models/categoria.dto';
 import { API_CONFIG } from '../../config/api.config';
@@ -26,12 +26,15 @@ export class CategoriasPage {
               public storage: StorageService,
               public menu: MenuController,
               public clienteService: ClienteService,
-              public alertCtrl: AlertController) {
+              public alertCtrl: AlertController,
+              public loadingCtrl: LoadingController) {
   }
 
   ionViewDidLoad() {
+    let loader = this.presentLoading();
     this.categoriaService.findAll()
     .subscribe(response => {
+      loader.dismiss();
       this.items = response;
     },
     error =>{});
@@ -128,6 +131,14 @@ export class CategoriasPage {
     logout(){
       this.storage.setLocalUser(null);
       this.navCtrl.setRoot('HomePage');
+  }
+
+  presentLoading(){
+    let loader = this.loadingCtrl.create({
+      content: "Aguarde..."
+    });
+    loader.present();
+    return loader;
   }
 }
 

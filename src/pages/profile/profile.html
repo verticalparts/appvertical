@@ -4,9 +4,9 @@
 
 <ion-content>
 
-    <ion-fab left bottom>
+    <ion-fab right bottom>
         <button ion-fab color="light"><ion-icon name="menu"></ion-icon></button>
-        <ion-fab-list side="right">
+        <ion-fab-list side="left">
           <button ion-fab (click)="goToSections()"><ion-icon name="albums"></ion-icon></button>
           <button ion-fab (click)="goToCategory()"><ion-icon name="construct"></ion-icon></button>
           <button ion-fab (click)="goToCart()"><ion-icon name="cart"></ion-icon></button>
@@ -37,11 +37,27 @@
       
         <ion-list *ngSwitchCase="'info'">
           <ion-item>
+            
             <p>Nome</p>
             <h2>{{ cliente?.nome }}</h2>
             <hr>
             <p>Email</p>
             <h2>{{ cliente?.email }}</h2>
+            <hr>
+            <h2><strong>Endereços de Entrega</strong></h2>
+          <div class="enderecos" *ngFor="let item of items">
+            <p>Rua</p>
+            <h2>{{ item.logradouro }}, {{ item.numero }}</h2>
+            <hr style="width: 50%;">
+            <p>Complemento</p>
+            <h2>{{ item.complemento }}</h2>
+            <hr style="width: 75%;">
+            <p>Bairro</p>
+            <h2>{{ item.bairro }}</h2>
+            <hr style="width: 50%;">
+            <p>CEP</p>
+            <h2>{{ item.cep }}</h2><hr>  
+          </div>
           </ion-item>
         </ion-list>
       

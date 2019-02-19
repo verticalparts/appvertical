@@ -4,6 +4,10 @@ import { StorageService } from '../../services/storage_service';
 import { ClienteDTO } from '../../models/cliente.dto';
 import { ClienteService } from '../../services/domain/cliente.service';
 import { API_CONFIG } from '../../config/api.config';
+import { EnderecoDTO } from '../../models/endereco.dto';
+import { CartItem } from '../../models/cart-item';
+import { PedidoDTO } from '../../models/pedido.dto';
+import { CartService } from '../../services/domain/cart.service';
 
 @IonicPage()
 @Component({
@@ -13,15 +17,32 @@ import { API_CONFIG } from '../../config/api.config';
 export class ProfilePage {
 
   cliente: ClienteDTO;
+  items: EnderecoDTO[];
   perfil: string;
+  endereco: EnderecoDTO;
+  codPedido: string;
+  cartItems: CartItem[];
+  pedido: PedidoDTO;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public storage: StorageService,
     public clienteService: ClienteService,
-    public menu: MenuController) {
+    public menu: MenuController,
+    public cartService: CartService) {
+
       this.perfil = "info";
   }
+  loadEndereco(){
+    let localUser = this.storage.getLocalUser();
+   if(localUser && localUser.email){
+     this.clienteService.findByEmail(localUser.email)
+      .subscribe(response => {
+        this.items = response['enderecos'];
+      },
+      error => {});
+  }
+}
 
   ionViewDidLoad() {
    let localUser = this.storage.getLocalUser();
@@ -36,6 +57,7 @@ export class ProfilePage {
           this.navCtrl.setRoot('HomePage');
         }
       });
+      this.loadEndereco();
   }
   else {
     this.navCtrl.setRoot('HomePage');

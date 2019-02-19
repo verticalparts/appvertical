@@ -17,7 +17,9 @@ import { CachedResourceLoader } from '@angular/platform-browser-dynamic/src/reso
 })
 export class ProdutosPage {
 
-  items: ProdutoDTO[];
+  items: ProdutoDTO[] = [];
+  page: number = 0;
+
   categorias: CategoriaDTO[];
   cliente: ClienteDTO;
 
@@ -32,31 +34,42 @@ export class ProdutosPage {
               public modalCtrl: ModalController,
               public loadingCtrl: LoadingController) {
 
-                this.initializeItems();
-  }
-  initializeItems() {
-    this.items;
   }
 
-  getProdutos(ev) {
-    this.initializeItems();
+
+  getProdutos(ev) { //Filtrar produtos
     var val = ev.target.value;
     if (val && val.trim() != '') {
       this.items = this.items.filter((item) => {
-        return (item.nome.toString().toLowerCase().indexOf(val.toLowerCase()) > -1);
+        return (item.nome.toString().toLowerCase().indexOf(val.toLowerCase()) > -1) || 
+               (item.vper.toString().toLowerCase().indexOf(val.toLowerCase()) > -1) || 
+               (item.marca.toString().toLowerCase().indexOf(val.toLowerCase()) > -1)||
+               (item.modelo.toString().toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
+  }
+
+  doRefresh() { //Recarregar produtos
+    this.page = 0;
+    this.items = [];
+    this.loadData();
   }
   
 
   ionViewDidLoad() {  
+    this.loadData();
+  }
+
+  loadData(){
     let categoria_id = this.navParams.get('categoria_id');
     let loader = this.presentLoading();
-    this.produtoService.findByCategoria(categoria_id)
+    this.produtoService.findByCategoria(categoria_id, this.page, 10)
       .subscribe(response => {
-        this.items = response['content'];
+        let start = this.items.length;
+        this.items = this.items.concat (response['content']);
+        let end = this.items.length - 1;
         loader.dismiss();
-        this.loadImageUrls();
+        this.loadImageUrls(start, end);
       },
       error => {
         loader.dismiss();
@@ -70,17 +83,17 @@ export class ProdutosPage {
   ionViewWillLeave(){
     this.menu.swipeEnable(true);
   }
-
-  loadImageUrls() {
-    for (var i=0; i<this.items.length; i++) {
-      let item = this.items[i];
-      this.produtoService.getImageFromBucket(item.id)
-        .subscribe(response => {
-          item.imageUrl = `${API_CONFIG.bucketProdUrl}/VPER-${item.id}.png`;
-        },
-        error => {});
-    }
-  } 
+  
+    loadImageUrls(start: number, end: number) {
+      for (var i=start; i<=end; i++) {
+        let item = this.items[i];
+        this.produtoService.getImageFromBucket(item.id)
+          .subscribe(response => {
+            item.imageUrl = `${API_CONFIG.bucketProdUrl}/VPER-${item.id}.png`;
+          },
+          error => {});
+      }
+    } 
 
   goToProfile(){
       let localUser = this.storage.getLocalUser();
@@ -170,17 +183,20 @@ export class ProdutosPage {
       this.navCtrl.setRoot('HomePage');
     }
 
-    getFilter() {
-        const modal = this.modalCtrl.create("ModalPage");
-        modal.present();
-      }
-
       presentLoading(){
         let loader = this.loadingCtrl.create({
           content: "Aguarde..."
         });
         loader.present();
         return loader;
+      }
+
+      doInfinite(infiniteScroll) {
+        this.page++;
+        this.loadData();   
+        setTimeout(() => {
+          infiniteScroll.complete();
+        }, 1000);
       }
 
     

@@ -19,24 +19,9 @@ export class Menu2Page {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad Menu2Page');
   }
   
   goCategoria(){
-    /*let loading = this.loadingCtrl.create({
-      spinner: 'hide',
-      content: `
-      <div class="custom-spinner-container">
-      <img class="loading" width="620px" height="420px" src="assets/imgs/spinner.gif" />
-      </div>`,
-      duration: 5000
-    });
-  
-    loading.onDidDismiss(() => {
-      console.log('Dismissed loading');
-    });
-  
-    loading.present();*/
     this.navCtrl.push("CategoriasPage");
   }
 
