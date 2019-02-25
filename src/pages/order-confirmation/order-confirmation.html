@@ -21,7 +21,7 @@
             <img [src]="item.produto.imageUrl || 'assets/imgs/prod.jpg'">
           </ion-thumbnail>
           <p><small>{{item.produto.vper}}</small></p>
-          <h2><b>{{item.produto.nome}}</b></h2>
+          <h2 style="white-space: pre;"><b>{{item.produto.nome}}</b></h2>
           <p><small>Quantidade</small></p>
           <p class="nolinebreak">{{item.quantidade}}</p>
         </ion-item> 
@@ -65,7 +65,7 @@
     </ion-card>
     <ion-footer class="confirmation">
       <ion-toolbar>
-        <button ion-button block (click)="checkout()">Confirmar pedido</button>
+        <button ion-button block (click)="checkout()">Enviar cotação</button>
         <button ion-button block (click)="back()">Voltar</button>
       </ion-toolbar>
     </ion-footer>

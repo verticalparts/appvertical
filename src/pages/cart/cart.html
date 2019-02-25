@@ -13,7 +13,7 @@
         <ion-thumbnail item-start>
           <img [src]="item.produto.imageUrl || 'assets/imgs/prod.jpg'">
         </ion-thumbnail>
-        <h2>{{item.produto.nome}}</h2>
+        <h2 style="white-space: pre;">{{item.produto.nome}}</h2>
         <p>{{item.produto.vper}}</p>
       <ion-icon class="nolinebreak" name="remove-circle" color="primary"  (click)="decreaseQuantity(item.produto)"></ion-icon>
       <p class="nolinebreak">{{item.quantidade}}</p>
@@ -21,8 +21,6 @@
       <ion-icon name="trash" item-end  color="danger" (click)="removeItem(item.produto)"></ion-icon>
       </ion-item>
     </ion-list>
-    <ion-footer>
-      <button ion-button block (click)="goOn()">Continuar comprando</button>   
-      <button ion-button color="secondary" block (click)="checkout()">Finalizar pedido</button>   
-    </ion-footer> 
+      <button ion-button block (click)="goOn()">Continuar cotando</button>   
+      <button ion-button color="secondary" block (click)="checkout()">Finalizar cotação</button>   
   </ion-content>

@@ -25,14 +25,12 @@
 
   <ion-list>
     <button ion-item *ngFor="let item of items" (click)="showDetails(item.id)">
-      <ion-thumbnail item-end>
+      <ion-thumbnail item-end >
         <img [src]="item.imageUrl || 'assets/imgs/mini.png'">
       </ion-thumbnail>
-      <div class="paragrafo">
-        <h2>{{item.nome}}</h2>
-        <p>{{item.vper}}</p>
-        <p>{{item.marca}}</p>
-      </div>
+        <p><small><strong>{{item.vper}}</strong></small></p>
+        <h2 style="white-space: pre;">{{item.nome}}</h2>
+        <p>Ref.: {{item.marca}}</p>
     </button>
   </ion-list>
 
