@@ -8,6 +8,7 @@ import { EnderecoDTO } from '../../models/endereco.dto';
 import { CartItem } from '../../models/cart-item';
 import { PedidoDTO } from '../../models/pedido.dto';
 import { CartService } from '../../services/domain/cart.service';
+import { CameraOptions, Camera } from '@ionic-native/camera';
 
 @IonicPage()
 @Component({
@@ -23,13 +24,16 @@ export class ProfilePage {
   codPedido: string;
   cartItems: CartItem[];
   pedido: PedidoDTO;
+  picture: string;
+  cameraOn: boolean = false;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public storage: StorageService,
     public clienteService: ClienteService,
     public menu: MenuController,
-    public cartService: CartService) {
+    public cartService: CartService,
+    public camera: Camera) {
 
       this.perfil = "info";
   }
@@ -95,5 +99,24 @@ ionViewWillLeave(){
         this.cliente.imageUrl = `${API_CONFIG.bucketImageUrl}/cp${this.cliente.id}.jpg`;
       },
       error => {});
+  }
+
+  getCameraPicture(){
+
+    this.cameraOn = true;
+
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.FILE_URI,
+      encodingType: this.camera.EncodingType.PNG,
+      mediaType: this.camera.MediaType.PICTURE
+    }
+    
+    this.camera.getPicture(options).then((imageData) => {
+     this.picture = 'data:image/png;base64,' + imageData;
+     this.cameraOn = false;
+    }, (err) => {
+
+    });
   }
 }

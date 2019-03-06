@@ -84,7 +84,7 @@ export class DetalhesPage {
 }
 
   call(){
-    this.callNumber.callNumber("+5511969122684", true)
+    this.callNumber.callNumber("+551125286473", true)
       .then(res => console.log('Launched dialer!', res))
       .catch(err => console.log('Error launching dialer', err));
   }

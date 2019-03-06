@@ -26,10 +26,8 @@ export class OrderConfirmationPage {
               public cartService: CartService, 
               public clienteService: ClienteService,
               public pedidoService: PedidoService) {
-
                 this.pedido = this.navParams.get('pedido');
   }
-
   
   ionViewDidLoad() {
     this.cartItems = this.cartService.getCart().items;
@@ -74,4 +72,6 @@ export class OrderConfirmationPage {
         let position = location.lastIndexOf('/');
         return location.substring(position + 1, location.length);
       }
+
+
   }

@@ -47,6 +47,11 @@ export class ProdutosPage {
                (item.modelo.toString().toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
+    else{
+      this.page = 0;
+      this.items = [];
+      this.loadData();
+    }
   }
 
   doRefresh() { //Recarregar produtos

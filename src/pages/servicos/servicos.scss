@@ -1,0 +1,109 @@
+page-servicos {
+
+    @font-face {
+        font-family: Axis;
+        src: url(../fonts/axis.otf)
+    }
+    
+    .revitalizacao{
+        font-family: Axis;
+        text-transform: uppercase;
+        font-size: 30px;
+        color: white;
+        text-shadow: 2px 2px #000000;
+    }
+
+    .instalacao-escada{
+        font-family: Axis;
+        text-transform: uppercase;
+        font-size: 25px;
+        color: white;
+        text-shadow: 2px 2px #000000;
+    }
+
+    .corrimao{
+        font-family: Axis;
+        text-transform: uppercase;
+        font-size: 20px;
+        color: white;
+        text-shadow: 2px 2px #000000;
+    }
+
+    .limpeza{
+        font-family: Axis;
+        text-transform: uppercase;
+        font-size: 25px;
+        color: white;
+        text-shadow: 2px 2px #000000;
+    }
+
+    .troca{
+        font-family: Axis;
+        text-transform: uppercase;
+        font-size: 25px;
+        color: white;
+        text-shadow: 2px 2px #000000;
+    }
+
+    .slide1{
+        background-image: url('../assets/imgs/serv1.gif');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        background-size: 180% 100%;
+    }
+
+    .slide2{
+        background-image: url('../assets/imgs/serv2.gif');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        background-size: 250% 100%;
+    }
+
+    .slide3{
+        background-image: url('../assets/imgs/serv3.gif');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        background-size: 200% 100%;
+    }
+
+    .slide4{
+        background-image: url('../assets/imgs/serv4.gif');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        background-size: 250% 100%;
+    }
+
+    .slide5{
+        background-image: url('../assets/imgs/serv5.gif');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        background-size: 250% 100%;
+    }
+
+    .box {
+        background:  rgba(0, 0, 0, 0.5);
+        padding: 15px 20px 5px 20px;
+        margin-top: 30px;
+      }
+
+    p{
+        text-align: justify;
+        text-justify: inter-word;
+        color: white;
+    }
+
+    .swiper-pagination-bullet {
+        background: rgb(0, 0, 0);
+        opacity: 0.5;
+      }
+    
+      .swiper-pagination-bullet-active {
+        opacity: 1;
+        background: #fdd000;
+      }
+}

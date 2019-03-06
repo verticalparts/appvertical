@@ -30,7 +30,7 @@
 
     <ion-card>
         <ion-card-header>
-          Cliente
+          <strong>Cliente</strong>
         </ion-card-header>
         <ion-item>
           <p>Nome</p>
@@ -46,7 +46,7 @@
 
     <ion-card>
       <ion-card-header>
-        Endereço de entrega
+        <strong>Endereço de entrega</strong>
       </ion-card-header>
 
       <ion-item>
@@ -71,15 +71,17 @@
     </ion-footer>
   </div>
   <div *ngIf="codPedido">
-    <ion-card>
-      <ion-card-header>
-        Seu pedido foi registrado!
-      </ion-card-header>
-      <ion-item>
-        <h2>Código do pedido: {{codPedido}}</h2>
+      <img class="check" src="assets/imgs/checked.png">
+      <br>
+      <br>
+      <br>
+      <ion-title class="pedConfirmado">
+        Sua cotação foi registrada!
+      </ion-title>
+      <hr style="width: 100%;">
+        <h2>Código da cotação: {{codPedido}}</h2>
+        <p>Em breve um de nossos vendedores entrará em contato!</p>
         <p>Verifique seu email.</p>
-      </ion-item>
-    </ion-card>
     <ion-footer>
       <ion-toolbar>
         <button ion-button block (click)="backCat()">Voltar</button>

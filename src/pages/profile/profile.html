@@ -27,9 +27,9 @@
         <ion-segment-button value="info" checked>
           Informações
         </ion-segment-button>
-        <ion-segment-button value="pedidos">
-          Pedidos
-        </ion-segment-button>
+        <!--<ion-segment-button value="fav">
+          Favoritos
+        </ion-segment-button>-->
       </ion-segment>
     </div>
     
@@ -61,10 +61,22 @@
           </ion-item>
         </ion-list>
       
-        <ion-list *ngSwitchCase="'pedidos'">
+        <ion-list *ngSwitchCase="'fav'">
           <ion-item>
-            <h2>Pedidos</h2>
+            <h2>Favoritos</h2>
           </ion-item>
         </ion-list>
       </div>
+
+      <ion-card>
+        <ion-card-header>
+          Enviar imagem de perfil
+        </ion-card-header>
+        <ion-item *ngIf="picture">
+          <img [src]="picture">
+        </ion-item>
+        <ion-item>
+          <button ion-button block (click)="getCameraPicture()" [disabled]="cameraOn">Camera</button>
+        </ion-item>
+      </ion-card>  
 </ion-content>

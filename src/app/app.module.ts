@@ -29,6 +29,8 @@ import { BrMaskerModule } from 'brmasker-ionic-3';
 
 import { CallNumber } from '@ionic-native/call-number';
 
+import { LottieAnimationViewModule } from 'ng-lottie';
+
 @NgModule({
   declarations: [
     MyApp
@@ -37,6 +39,7 @@ import { CallNumber } from '@ionic-native/call-number';
     BrowserModule,
     HttpClientModule,
     BrMaskerModule,
+    LottieAnimationViewModule.forRoot(),
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
