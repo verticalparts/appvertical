@@ -30,6 +30,7 @@ import { BrMaskerModule } from 'brmasker-ionic-3';
 import { CallNumber } from '@ionic-native/call-number';
 
 import { LottieAnimationViewModule } from 'ng-lottie';
+import { ImageUtilService } from '../services/image-util.service';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { LottieAnimationViewModule } from 'ng-lottie';
     DocumentViewer,
     FileTransfer,
     InAppBrowser,
-    CallNumber
+    CallNumber,
+    ImageUtilService
   ]
 })
 export class AppModule {}

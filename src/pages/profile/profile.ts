@@ -9,6 +9,7 @@ import { CartItem } from '../../models/cart-item';
 import { PedidoDTO } from '../../models/pedido.dto';
 import { CartService } from '../../services/domain/cart.service';
 import { CameraOptions, Camera } from '@ionic-native/camera';
+import { ActionSheetController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -33,7 +34,8 @@ export class ProfilePage {
     public clienteService: ClienteService,
     public menu: MenuController,
     public cartService: CartService,
-    public camera: Camera) {
+    public camera: Camera,
+    public actionSheetCtrl: ActionSheetController) {
 
       this.perfil = "info";
   }
@@ -48,8 +50,39 @@ export class ProfilePage {
   }
 }
 
+presentActionSheet() {
+  const actionSheet = this.actionSheetCtrl.create({
+    title: 'Alterar foto de perfil',
+    buttons: [
+      {
+        text: 'Tirar foto',
+        role: 'tirar foto',
+        handler: () => {
+          this.getCameraPicture();
+        }
+      },{
+        text: 'Procurar foto',
+        handler: () => {
+          this.getPicture();
+        }
+      },{
+        text: 'Cancelar',
+        role: 'cancel',
+        handler: () => {
+    
+        }
+      }
+    ]
+  });
+  actionSheet.present();
+}
+
   ionViewDidLoad() {
-   let localUser = this.storage.getLocalUser();
+   this.loadData();
+  }
+
+  loadData(){
+    let localUser = this.storage.getLocalUser();
    if(localUser && localUser.email){
      this.clienteService.findByEmail(localUser.email)
       .subscribe(response => {
@@ -66,7 +99,7 @@ export class ProfilePage {
   else {
     this.navCtrl.setRoot('HomePage');
   }
-}
+  }
 
 goToSections(){
   this.navCtrl.setRoot("Menu2Page");
@@ -115,8 +148,42 @@ ionViewWillLeave(){
     this.camera.getPicture(options).then((imageData) => {
      this.picture = 'data:image/png;base64,' + imageData;
      this.cameraOn = false;
+     this.sendPicture();
     }, (err) => {
 
     });
+  }
+
+  getPicture(){
+
+    this.cameraOn = true;
+
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.FILE_URI,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      saveToPhotoAlbum: false
+    }
+    
+    this.camera.getPicture(options).then((imageData) => {
+     this.picture = 'data:image/png;base64,' + imageData;
+     this.cameraOn = false;
+     this.sendPicture();
+    }, (err) => {
+
+    });
+  }
+
+  sendPicture(){
+    this.clienteService.uploadPicture(this.picture)
+      .subscribe(response =>{
+        this.picture = null;
+        this.loadData();
+      },
+      error=> {});
+  }
+
+  cancel(){
+    this.picture = null;
   }
 }
