@@ -25,7 +25,8 @@ export class OrderConfirmationPage {
               public navParams: NavParams, 
               public cartService: CartService, 
               public clienteService: ClienteService,
-              public pedidoService: PedidoService) {
+              public pedidoService: PedidoService,
+              public loadingCtrl: LoadingController) {
                 this.pedido = this.navParams.get('pedido');
   }
   
@@ -56,9 +57,11 @@ export class OrderConfirmationPage {
   }
 
   checkout(){
+    let loader = this.presentLoading();
     this.pedidoService.insert(this.pedido)
       .subscribe(response => {
         this.cartService.createOrClearCart();
+        loader.dismiss();
        this.codPedido = this.extractId (response.headers.get('location'));
       },
       error => {
@@ -71,6 +74,14 @@ export class OrderConfirmationPage {
       private extractId(location : string) : string{
         let position = location.lastIndexOf('/');
         return location.substring(position + 1, location.length);
+      }
+
+      presentLoading(){
+        let loader = this.loadingCtrl.create({
+          content: "Enviando cotação..."
+        });
+        loader.present();
+        return loader;
       }
 
 
