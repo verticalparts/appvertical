@@ -34,8 +34,8 @@ export class CategoriasPage {
     let loader = this.presentLoading();
     this.categoriaService.findAll()
     .subscribe(response => {
-      loader.dismiss();
       this.items = response;
+      loader.dismiss();
     },
     error =>{});
   }

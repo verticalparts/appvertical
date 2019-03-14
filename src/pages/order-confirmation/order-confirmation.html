@@ -12,7 +12,7 @@
   <div *ngIf="!codPedido">
     <ion-card>
       <ion-card-header>
-        Itens do pedido
+        <strong>Itens do pedido</strong>
       </ion-card-header>
 
       <ion-list>
@@ -38,9 +38,8 @@
           <br>
           <p>Email</p>
           <h2>{{cliente?.email}}</h2>
-          <br>
-          <p>Telefone <strong style="color: red;">REMOVER</strong></p>
-          <h2>{{cliente?.telefones}}</h2>
+          <!--<p>Telefone <strong style="color: red;">REMOVER</strong></p>
+          <h2>{{cliente?.telefones}}</h2>-->
         </ion-item>
     </ion-card>
 
@@ -65,7 +64,7 @@
     </ion-card>
     <ion-footer class="confirmation">
       <ion-toolbar>
-        <button ion-button block (click)="checkout()">Enviar cotação</button>
+        <button ion-button block outline color="secondary" (click)="checkout()">Enviar cotação</button>
         <button ion-button block (click)="back()">Voltar</button>
       </ion-toolbar>
     </ion-footer>
