@@ -2,11 +2,11 @@ page-menu2 {
 
     @font-face {
         font-family: Axis;
-        src: url(../fonts/axis.otf)
+        src: url(../fonts/axis.otf);
     }
     
     h1{
-        font-family: Axis;
+        font-family: Axis !important;
         text-transform: uppercase;
         font-size: 45px;
         color: white;

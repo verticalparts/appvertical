@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, LoadingController } from 'ionic-angular';
 import { StorageService } from '../../services/storage_service';
 import { ClienteDTO } from '../../models/cliente.dto';
 import { ClienteService } from '../../services/domain/cliente.service';
@@ -10,6 +10,7 @@ import { PedidoDTO } from '../../models/pedido.dto';
 import { CartService } from '../../services/domain/cart.service';
 import { CameraOptions, Camera } from '@ionic-native/camera';
 import { ActionSheetController } from 'ionic-angular';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @IonicPage()
 @Component({
@@ -26,6 +27,7 @@ export class ProfilePage {
   cartItems: CartItem[];
   pedido: PedidoDTO;
   picture: string;
+  profileImage;
   cameraOn: boolean = false;
 
   constructor(public navCtrl: NavController,
@@ -35,8 +37,10 @@ export class ProfilePage {
     public menu: MenuController,
     public cartService: CartService,
     public camera: Camera,
-    public actionSheetCtrl: ActionSheetController) {
-
+    public actionSheetCtrl: ActionSheetController,
+    public loadingCtrl: LoadingController,
+    public sanitizer: DomSanitizer) {
+      this.profileImage = 'assets/imgs/avatar-blank.png';
       this.perfil = "info";
   }
   loadEndereco(){
@@ -126,12 +130,27 @@ ionViewWillLeave(){
   this.menu.swipeEnable(true);
 }
 
+blobToDataURL(blob){
+  return new Promise((fulfill, reject) => {
+    let reader = new FileReader();
+    reader.onerror = reject;
+    reader.onload = (e) => fulfill(reader.result);
+    reader.readAsDataURL(blob);
+  }) 
+}
+
   getImageIfExists(){
     this.clienteService.getImageFromBucket(this.cliente.id)
       .subscribe(response => {
         this.cliente.imageUrl = `${API_CONFIG.bucketImageUrl}/cp${this.cliente.id}.jpg`;
+        this.blobToDataURL(response).then(dataUrl => {
+          let str : string = dataUrl as string;
+          this.profileImage = this.sanitizer.bypassSecurityTrustUrl(str);
+        });
       },
-      error => {});
+      error => {
+        this.profileImage = 'assets/imgs/avatar-blank.png';
+      });
   }
 
   getCameraPicture(){
@@ -140,7 +159,7 @@ ionViewWillLeave(){
 
     const options: CameraOptions = {
       quality: 100,
-      destinationType: this.camera.DestinationType.FILE_URI,
+      destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.PNG,
       mediaType: this.camera.MediaType.PICTURE
     }
@@ -148,9 +167,8 @@ ionViewWillLeave(){
     this.camera.getPicture(options).then((imageData) => {
      this.picture = 'data:image/png;base64,' + imageData;
      this.cameraOn = false;
-     this.sendPicture();
     }, (err) => {
-
+      this.cameraOn = false;
     });
   }
 
@@ -160,7 +178,7 @@ ionViewWillLeave(){
 
     const options: CameraOptions = {
       quality: 100,
-      destinationType: this.camera.DestinationType.FILE_URI,
+      destinationType: this.camera.DestinationType.DATA_URL,
       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
       saveToPhotoAlbum: false
     }
@@ -168,22 +186,31 @@ ionViewWillLeave(){
     this.camera.getPicture(options).then((imageData) => {
      this.picture = 'data:image/png;base64,' + imageData;
      this.cameraOn = false;
-     this.sendPicture();
     }, (err) => {
-
+      this.cameraOn = false;
     });
   }
 
   sendPicture(){
+    let loader = this.presentLoading();
     this.clienteService.uploadPicture(this.picture)
       .subscribe(response =>{
         this.picture = null;
-        this.loadData();
+        this.getImageIfExists;
+        loader.dismiss();
       },
       error=> {});
   }
 
   cancel(){
     this.picture = null;
+  }
+
+  presentLoading(){
+    let loader = this.loadingCtrl.create({
+      content: "Aguarde..."
+    });
+    loader.present();
+    return loader;
   }
 }

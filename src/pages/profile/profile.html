@@ -14,12 +14,14 @@
         </ion-fab-list>
       </ion-fab><!-- FAB com Menu em ícones -->
   <div class="bg">
-    <ion-avatar>
-      <img class="circle" [src]="cliente?.imageUrl || 'assets/imgs/avatar-blank.png'"> 
+    <ion-avatar (click)="presentActionSheet()">
+      <img class="circle" [src]="profileImage"> 
     </ion-avatar>
     <h2 text-center class="nome">{{cliente?.nome}}</h2>
     <br>
-    <button ion-button color="light" (click)="presentActionSheet()" [disabled]="cameraOn" class="edit-photo"><ion-icon name="md-create"></ion-icon></button>
+    <!--<button ion-button color="light" (click)="presentActionSheet()" [disabled]="cameraOn" class="edit-photo"><ion-icon name="md-create"></ion-icon></button>-->
+    <button *ngIf="picture" ion-button color="light" full (click)="sendPicture()">Enviar imagem</button>
+    <button *ngIf="picture" ion-button color="danger" full (click)="cancel()">Descartar imagem</button>
   </div>
     
   <div>
@@ -27,9 +29,6 @@
         <ion-segment-button value="info" checked>
           Informações
         </ion-segment-button>
-        <!--<ion-segment-button value="fav">
-          Favoritos
-        </ion-segment-button>-->
       </ion-segment>
     </div>
     
