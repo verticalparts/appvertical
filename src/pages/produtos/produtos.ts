@@ -54,13 +54,13 @@ export class ProdutosPage {
     }
   }
 
-  doRefresh() { //Recarregar produtos
-    this.page = 0;
-    this.items = [];
+  doRefresh(refresher) {
     this.loadData();
+    setTimeout(() => {
+      refresher.complete();
+    }, 1000);
   }
   
-
   ionViewDidLoad() {  
     this.loadData();
   }

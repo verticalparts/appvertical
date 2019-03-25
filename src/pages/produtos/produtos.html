@@ -8,9 +8,9 @@
 
     <ion-searchbar placeholder="Pesquisar..." (ionInput)="getProdutos($event)"></ion-searchbar>
 
-    <button ion-button class="refresher" (click)="doRefresh()" small outline color="dark">
-        Recarregar
-    </button>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
 
     <ion-fab left bottom>
         <button ion-fab color="light"><ion-icon name="menu"></ion-icon></button>
