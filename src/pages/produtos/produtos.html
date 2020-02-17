@@ -8,18 +8,14 @@
 
     <ion-searchbar placeholder="Pesquisar..." (ionInput)="getProdutos($event)"></ion-searchbar>
 
-    <ion-refresher (ionRefresh)="doRefresh($event)">
-      <ion-refresher-content></ion-refresher-content>
-    </ion-refresher>
-
     <ion-fab left bottom>
         <button ion-fab color="light"><ion-icon name="menu"></ion-icon></button>
-        <ion-fab-list side="right">
-          <button ion-fab (click)="goToProfile()"><ion-icon name="people"></ion-icon></button>
-          <button ion-fab (click)="goToSections()"><ion-icon name="albums"></ion-icon></button>
-          <button ion-fab (click)="goToCategory()"><ion-icon name="construct"></ion-icon></button>
-          <button ion-fab (click)="goToCart()"><ion-icon name="cart"></ion-icon></button>
-          <button ion-fab (click)="logout()"><ion-icon name="exit"></ion-icon></button>
+        <ion-fab-list side="top">
+          <button ion-fab (click)="goToProfile()"><ion-icon name="people"></ion-icon><div class="label" dir="rtl">Minha conta</div></button>
+          <button ion-fab (click)="goToSections()"><ion-icon name="albums"></ion-icon><div class="label" dir="rtl">Menus</div></button>
+          <button ion-fab (click)="goToCategory()"><ion-icon name="construct"></ion-icon><div class="label" dir="rtl">Peças</div></button>
+          <button ion-fab (click)="goToCart()"><ion-icon name="cart"></ion-icon><div class="label" dir="rtl">Carrinho de peças</div></button>
+          <button ion-fab (click)="logout()"><ion-icon name="exit"></ion-icon><div class="label" dir="rtl">Sair</div></button>
         </ion-fab-list>
       </ion-fab><!-- FAB com Menu em ícones -->
 
@@ -34,8 +30,8 @@
     </button>
   </ion-list>
 
-  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+  <!--<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
     <ion-infinite-scroll-content></ion-infinite-scroll-content>
-  </ion-infinite-scroll>
+  </ion-infinite-scroll>-->
    
 </ion-content>

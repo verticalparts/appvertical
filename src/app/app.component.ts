@@ -30,8 +30,10 @@ export class MyApp {
     this.pages = [
       { title: 'Perfil', component: 'ProfilePage', icon: "people" },
       { title: 'Seleção de Menus', component: 'Menu2Page', icon: "albums" },
-      { title: 'Produtos', component: 'CategoriasPage', icon: "construct" },
-      { title: 'Carrinho', component: 'CartPage', icon: "cart"},
+      /*{ title: 'Produtos', component: 'CategoriasPage', icon: "construct" },
+      { title: 'Carrinho de Peças', component: 'CartPage', icon: "cart"},
+      { title: 'Corrimãos', component: 'CategoriasCPage', icon: "construct" },
+      { title: 'Carrinho de Corrimãos', component: 'CartCPage', icon: "cart"},*/
       { title: 'Logout', component: '', icon: "exit"}
       
     ];

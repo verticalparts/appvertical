@@ -41,6 +41,11 @@ export class DocumentosPage {
    this.iab.create('https://drive.google.com/file/d/1YDimkUGAKCobtCr_V_YBRVmXZ_nJGyVO/view?usp=sharing' + url);
   }
 
+  openDoc2(){
+    let url = encodeURIComponent('');
+    this.iab.create('https://drive.google.com/file/d/1bdYQ54saZdPAw_C3Yvq_BeCoYH7bMxwa/view?usp=sharing' + url);
+   }
+
   goToProfile(){
     let localUser = this.storage.getLocalUser();
   if(localUser && localUser.email){

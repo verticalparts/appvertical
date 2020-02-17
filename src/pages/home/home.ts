@@ -49,6 +49,10 @@ export class HomePage {
     this.navCtrl.push("SignupPage");
   }
 
+  newPass(){
+    this.navCtrl.push("NewpPage");
+  }
+
   noAccount(){
     this.navCtrl.setRoot("Menu2Page");
     let alert =  this.alertCtrl.create({

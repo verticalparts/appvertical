@@ -3,5 +3,7 @@ export const API_CONFIG = {
     baseUrl: "https://appvertical.herokuapp.com",
     bucketBaseUrl: "https://s3-sa-east-1.amazonaws.com/imagens-vp/categorias",
     bucketImageUrl: "https://s3-sa-east-1.amazonaws.com/imagens-vp",
-    bucketProdUrl: "https://s3-sa-east-1.amazonaws.com/imagens-vp/produtos"
+    bucketProdUrl: "https://s3-sa-east-1.amazonaws.com/imagens-vp/produtos",
+    bucketCatUrl: "https://s3-sa-east-1.amazonaws.com/imagens-vp/categoriasC",
+    bucketCorrUrl: "https://s3-sa-east-1.amazonaws.com/imagens-vp/corrimaos"
 }

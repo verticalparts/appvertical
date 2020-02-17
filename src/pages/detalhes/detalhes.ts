@@ -8,6 +8,7 @@ import { StorageService } from '../../services/storage_service';
 import { ClienteDTO } from '../../models/cliente.dto';
 import { ClienteService } from '../../services/domain/cliente.service';
 import { CallNumber } from '@ionic-native/call-number';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @IonicPage()
 @Component({
@@ -25,7 +26,8 @@ export class DetalhesPage {
               public storage: StorageService, 
               public clienteService: ClienteService,
               public alertCtrl: AlertController,
-              public callNumber: CallNumber) {
+              public callNumber: CallNumber,
+              public iab: InAppBrowser) {
   }
 
   ionViewDidLoad() {
@@ -87,6 +89,11 @@ export class DetalhesPage {
     this.callNumber.callNumber("+551125286473", true)
       .then(res => console.log('Launched dialer!', res))
       .catch(err => console.log('Error launching dialer', err));
+  }
+
+  chat(){
+    const browser = this.iab.create('https://api.whatsapp.com/send?phone=5511995578519');
+    browser.show()
   }
 
 }

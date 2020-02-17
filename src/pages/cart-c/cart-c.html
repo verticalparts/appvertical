@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+    </button>    
+    <ion-title>Meu carrinho</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let item of items">
+      <ion-thumbnail item-start>
+        <img [src]="item.corrimao.imageUrl || 'assets/imgs/prod.jpg'">
+      </ion-thumbnail>
+      <h2 style="white-space: pre;">{{item.corrimao.nome}}</h2>
+    <ion-icon name="trash" item-end  color="danger" (click)="removeItem(item.corrimao)"></ion-icon>
+    </ion-item>
+  </ion-list>
+    <ion-item *ngIf="total() <= 0">
+      <h1>Seu carrinho está vazio!</h1>
+    </ion-item>
+    <button *ngIf="total() > 0" ion-button color="secondary" block (click)="checkout()">Finalizar cotação</button> 
+    <button ion-button block (click)="goOn()">Continuar cotando</button>     
+</ion-content>

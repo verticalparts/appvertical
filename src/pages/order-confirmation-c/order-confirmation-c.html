@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title *ngIf="codPedido">Pedido registrado</ion-title>
+    <ion-title *ngIf="!codPedido">Confira seu pedido</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div *ngIf="!codPedido">
+    <ion-card>
+      <ion-card-header>
+        <strong>Itens do pedido</strong>
+      </ion-card-header>
+
+      <ion-list>
+        <ion-item *ngFor="let item of cartItems">
+          <ion-thumbnail item-start>
+            <img [src]="item.corrimao.imageUrl || 'assets/imgs/prod.jpg'">
+          </ion-thumbnail>
+          <h2 style="white-space: pre;"><b>{{item.corrimao.nome}}</b></h2>
+        </ion-item> 
+      </ion-list> 
+    </ion-card>
+
+    <ion-card>
+        <ion-card-header>
+          <strong>Cliente</strong>
+        </ion-card-header>
+        <ion-item>
+          <p>Nome</p>
+          <h2>{{cliente?.nome}}</h2>
+          <br>
+          <p>Email</p>
+          <h2>{{cliente?.email}}</h2>
+          <!--<p>Telefone <strong style="color: red;">REMOVER</strong></p>
+          <h2>{{cliente?.telefones}}</h2>-->
+        </ion-item>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <strong>Endereço de entrega</strong>
+      </ion-card-header>
+
+      <ion-item>
+        <p>Rua</p>
+          <h2>{{endereco?.logradouro}}, {{endereco?.numero}}</h2>
+          <br>
+        <p>Complemento</p>
+          <h2>{{endereco?.complemento}}</h2>
+          <br>
+        <p>Bairro</p>
+          <h2>{{endereco?.bairro}}</h2>
+          <br>
+        <p>CEP</p>
+          <h2>{{endereco?.cep}}</h2>
+      </ion-item>
+    </ion-card>
+    <ion-footer class="confirmation">
+      <ion-toolbar>
+        <button ion-button block color="secondary" (click)="checkout()">Enviar cotação</button>
+        <button ion-button block outline color="dark" (click)="back()">Voltar</button>
+      </ion-toolbar>
+    </ion-footer>
+  </div>
+  <div *ngIf="codPedido">
+      <img class="check" src="assets/imgs/checked.png">
+      <br>
+      <br>
+      <br>
+      <ion-title class="pedConfirmado">
+        Sua cotação foi registrada!
+      </ion-title>
+      <hr style="width: 100%;">
+        <h2>Código da cotação: {{codPedido}}</h2>
+        <p>Em breve um de nossos vendedores entrará em contato!</p>
+        <p>Verifique seu email.</p>
+    <ion-footer>
+      <ion-toolbar>
+        <button ion-button block (click)="backCat()">Voltar</button>
+      </ion-toolbar>
+    </ion-footer>
+  </div>
+</ion-content>

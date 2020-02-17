@@ -1,0 +1,19 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Esqueci minha senha</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <form [formGroup]="formGroup" (ngSubmit)="newPass(); $event.preventDefault()">
+      <ion-item>
+        <h2>Digite seu email</h2>
+          <ion-label floating>Email*</ion-label>
+          <ion-input formControlName="email" type="text"></ion-input>
+        </ion-item>
+    <button ion-button block type="submit" [disabled]="formGroup.invalid">Enviar nova senha</button>
+  </form>
+</ion-content>

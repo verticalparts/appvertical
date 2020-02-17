@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Corrimãos</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+    <ion-searchbar placeholder="Pesquisar..." (ionInput)="getProdutos($event)"></ion-searchbar>
+
+    
+
+    <ion-fab left bottom>
+        <button ion-fab color="light"><ion-icon name="menu"></ion-icon></button>
+        <ion-fab-list side="top">
+          <button ion-fab (click)="goToProfile()"><ion-icon name="people"></ion-icon><div class="label" dir="rtl">Minha conta</div></button>
+          <button ion-fab (click)="goToSections()"><ion-icon name="albums"></ion-icon><div class="label" dir="rtl">Menus</div></button>
+          <button ion-fab (click)="goToCategory()"><ion-icon name="construct"></ion-icon><div class="label" dir="rtl">Corrimãos</div></button>
+          <button ion-fab (click)="goToCart()"><ion-icon name="cart"></ion-icon><div class="label" dir="rtl">Carrinho de corrimãos</div></button>
+          <button ion-fab (click)="logout()"><ion-icon name="exit"></ion-icon><div class="label" dir="rtl">Sair</div></button>
+        </ion-fab-list>
+      </ion-fab><!-- FAB com Menu em ícones -->
+
+  <ion-list>
+    <button ion-item *ngFor="let item of items" (click)="showDetails(item.id)">
+      <ion-thumbnail item-end >
+        <img [src]="item.imageUrl || 'assets/imgs/mini.png'">
+      </ion-thumbnail>
+        <h2 style="white-space: pre;">{{item.nome}}</h2>
+    </button>
+  </ion-list>
+
+  <!--<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>-->
+   
+</ion-content>

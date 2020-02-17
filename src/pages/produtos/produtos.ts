@@ -54,12 +54,12 @@ export class ProdutosPage {
     }
   }
 
-  doRefresh(refresher) {
+  /*doRefresh(refresher) {
     this.loadData();
     setTimeout(() => {
       refresher.complete();
     }, 1000);
-  }
+  }*/
   
   ionViewDidLoad() {  
     this.loadData();
@@ -68,7 +68,7 @@ export class ProdutosPage {
   loadData(){
     let categoria_id = this.navParams.get('categoria_id');
     let loader = this.presentLoading();
-    this.produtoService.findByCategoria(categoria_id, this.page, 10)
+    this.produtoService.findByCategoria(categoria_id, this.page, 100)
       .subscribe(response => {
         let start = this.items.length;
         this.items = this.items.concat (response['content']);

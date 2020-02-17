@@ -1,12 +1,8 @@
 page-menu2 {
-
-    @font-face {
-        font-family: Axis;
-        src: url(../fonts/axis.otf);
-    }
     
     h1{
-        font-family: Roboto !important;
+        font-family: Arial !important;
+        font-weight: bold;
         text-transform: uppercase;
         font-size: 45px;
         color: white;
@@ -14,7 +10,7 @@ page-menu2 {
     }
     
     .slide1{
-        background-image: url('../assets/imgs/escalator2.gif');
+        background-image: url('https://imagens-vp.s3-sa-east-1.amazonaws.com/gifs/escalator2.gif');
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center center;
@@ -22,15 +18,23 @@ page-menu2 {
     }
 
     .slide2{
-        background-image: url('../assets/imgs/escalator3.gif');
+        background-image: url('https://imagens-vp.s3-sa-east-1.amazonaws.com/gifs/escalator1.gif');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        background-size: 300% 100%;
+    }
+
+    .slide3{
+        background-image: url('https://imagens-vp.s3-sa-east-1.amazonaws.com/gifs/escalator3.gif');
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center center;
         background-size: 200% 100%;
     }
 
-    .slide3{
-        background-image: url('../assets/imgs/escalator4.gif');
+    .slide4{
+        background-image: url('https://imagens-vp.s3-sa-east-1.amazonaws.com/gifs/escalator4.gif');
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center center;

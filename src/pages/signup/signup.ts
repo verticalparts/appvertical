@@ -16,7 +16,13 @@ export class SignupPage {
   formGroup: FormGroup;
   estados: EstadoDTO[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController, public formBuilder: FormBuilder, public estadoService: EstadoService, public clienteService: ClienteService, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams, 
+              public menu: MenuController, 
+              public formBuilder: FormBuilder, 
+              public estadoService: EstadoService, 
+              public clienteService: ClienteService, 
+              public alertCtrl: AlertController) {
 
     this.formGroup = this.formBuilder.group({
       nome: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(120)]],

@@ -25,6 +25,10 @@ export class Menu2Page {
     this.navCtrl.push("CategoriasPage");
   }
 
+  goCorrimao(){
+    this.navCtrl.push("CategoriasCPage");
+  }
+
   goDocumentos(){
     this.navCtrl.push("DocumentosPage");
   }

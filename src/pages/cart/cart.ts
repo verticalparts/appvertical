@@ -35,6 +35,10 @@ export class CartPage {
     }
   } 
 
+  total(){
+    return this.cartService.qnt;
+  }
+
   removeItem(produto: ProdutoDTO) {
     this.items = this.cartService.removeProduto(produto).items;
   }

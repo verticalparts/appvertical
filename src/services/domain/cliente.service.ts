@@ -53,4 +53,15 @@ export class ClienteService{
             }
         );
     }
+
+    newPass(newPass: ClienteDTO){
+        return this.http.post(
+            `${API_CONFIG.baseUrl}/auth/forgot`,
+            newPass,
+            {
+                observe: 'response',
+                responseType: 'text'
+            }
+        );
+    }
 }

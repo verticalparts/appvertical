@@ -61,6 +61,7 @@ export class OrderConfirmationPage {
     this.pedidoService.insert(this.pedido)
       .subscribe(response => {
         this.cartService.createOrClearCart();
+        this.cartService.qnt = 0;
         loader.dismiss();
        this.codPedido = this.extractId (response.headers.get('location'));
       },

@@ -1,12 +1,8 @@
 page-servicos {
 
-    @font-face {
-        font-family: Axis;
-        src: url(../fonts/axis.otf)
-    }
-    
     .revitalizacao{
-        font-family: Axis;
+        font-family: Arial;
+        font-weight: bold;
         text-transform: uppercase;
         font-size: 30px;
         color: white;
@@ -14,7 +10,8 @@ page-servicos {
     }
 
     .instalacao-escada{
-        font-family: Axis;
+        font-family: Arial;
+        font-weight: bold;
         text-transform: uppercase;
         font-size: 25px;
         color: white;
@@ -22,7 +19,8 @@ page-servicos {
     }
 
     .corrimao{
-        font-family: Axis;
+        font-family: Arial;
+        font-weight: bold;
         text-transform: uppercase;
         font-size: 20px;
         color: white;
@@ -30,7 +28,8 @@ page-servicos {
     }
 
     .limpeza{
-        font-family: Axis;
+        font-family: Arial;
+        font-weight: bold;
         text-transform: uppercase;
         font-size: 25px;
         color: white;
@@ -38,7 +37,17 @@ page-servicos {
     }
 
     .troca{
-        font-family: Axis;
+        font-family: Arial;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 25px;
+        color: white;
+        text-shadow: 2px 2px #000000;
+    }
+
+    .adroller{
+        font-family: Arial;
+        font-weight: bold;
         text-transform: uppercase;
         font-size: 25px;
         color: white;
@@ -46,7 +55,7 @@ page-servicos {
     }
 
     .slide1{
-        background-image: url('../assets/imgs/serv1.gif');
+        background-image: url('https://imagens-vp.s3-sa-east-1.amazonaws.com/gifs/serv1.gif');
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center center;
@@ -54,7 +63,7 @@ page-servicos {
     }
 
     .slide2{
-        background-image: url('../assets/imgs/serv2.gif');
+        background-image: url('https://imagens-vp.s3-sa-east-1.amazonaws.com/gifs/serv2.gif');
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center center;
@@ -62,7 +71,7 @@ page-servicos {
     }
 
     .slide3{
-        background-image: url('../assets/imgs/serv3.gif');
+        background-image: url('https://imagens-vp.s3-sa-east-1.amazonaws.com/gifs/serv3.gif');
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center center;
@@ -70,7 +79,7 @@ page-servicos {
     }
 
     .slide4{
-        background-image: url('../assets/imgs/serv4.gif');
+        background-image: url('https://imagens-vp.s3-sa-east-1.amazonaws.com/gifs/serv4.gif');
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center center;
@@ -78,7 +87,15 @@ page-servicos {
     }
 
     .slide5{
-        background-image: url('../assets/imgs/serv5.gif');
+        background-image: url('https://imagens-vp.s3-sa-east-1.amazonaws.com/gifs/serv5.gif');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        background-size: 250% 100%;
+    }
+
+    .slide6{
+        background-image: url('https://imagens-vp.s3-sa-east-1.amazonaws.com/gifs/serv6.gif');
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center center;

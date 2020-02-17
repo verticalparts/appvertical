@@ -12,12 +12,15 @@ import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
 import { AuthInterceptorProvider } from '../interceptors/auth-interceptor';
 
 import { CategoriaService } from '../services/domain/categoria.service';
+import { CategoriaCService } from '../services/domain/categoria-c.service';
 import { AuthService } from '../services/auth.service';
 import { StorageService } from '../services/storage_service';
 import { ClienteService } from '../services/domain/cliente.service';
 import { EstadoService } from '../services/domain/estado.service';
 import { ProdutoService } from '../services/domain/produto.service';
+import { CorrimaoService } from '../services/domain/corrimao.service';
 import { CartService } from '../services/domain/cart.service';
+import { CartCService } from '../services/domain/cart-c.service';
 
 import { File } from '@ionic-native/file';
 import { DocumentViewer } from '@ionic-native/document-viewer';
@@ -52,6 +55,7 @@ import { ImageUtilService } from '../services/image-util.service';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CategoriaService,
+    CategoriaCService,
     AuthInterceptorProvider,
     ErrorInterceptorProvider,
     AuthService,
@@ -59,7 +63,9 @@ import { ImageUtilService } from '../services/image-util.service';
     ClienteService,
     EstadoService,
     ProdutoService,
+    CorrimaoService,
     CartService,
+    CartCService,
     File,
     FileOpener,
     DocumentViewer,

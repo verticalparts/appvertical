@@ -40,6 +40,10 @@ export class ErrorInterceptor implements HttpInterceptor {
                 this.handle422(errorObj);
                 break;
 
+                case 404:
+                this.handle404();
+                break;
+
                 default:
                 this.handleDefaultEror(errorObj);
             }
@@ -64,6 +68,18 @@ export class ErrorInterceptor implements HttpInterceptor {
        alert.present();
 
     }
+
+    handle404(){
+        let alert = this.alertCtrl.create({
+            title: 'Email não encontrado', //Erro 404
+            message: 'Email não encontrado',
+            enableBackdropDismiss: false,
+            buttons: [
+                {text: 'Entendi'}
+            ]
+        });
+ 
+     }
 
     handle422(errorObj){
         let alert = this.alertCtrl.create({

@@ -6,11 +6,11 @@
 
     <ion-fab right bottom>
         <button ion-fab color="light"><ion-icon name="menu"></ion-icon></button>
-        <ion-fab-list side="left">
-          <button ion-fab (click)="goToSections()"><ion-icon name="albums"></ion-icon></button>
-          <button ion-fab (click)="goToCategory()"><ion-icon name="construct"></ion-icon></button>
-          <button ion-fab (click)="goToCart()"><ion-icon name="cart"></ion-icon></button>
-          <button ion-fab (click)="logout()"><ion-icon name="exit"></ion-icon></button>
+        <ion-fab-list side="top">
+          <button ion-fab (click)="goToSections()"><ion-icon name="albums"></ion-icon><div class="label" dir="rtl">Menus</div></button>
+          <button ion-fab (click)="goToCategory()"><ion-icon name="construct"></ion-icon><div class="label" dir="rtl">Peças</div></button>
+          <button ion-fab (click)="goToCart()"><ion-icon name="cart"></ion-icon><div class="label" dir="rtl">Carrinho de peças</div></button>
+          <button ion-fab (click)="logout()"><ion-icon name="exit"></ion-icon><div class="label" dir="rtl">Sair</div></button>
         </ion-fab-list>
       </ion-fab><!-- FAB com Menu em ícones -->
   <div class="bg">

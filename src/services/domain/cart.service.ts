@@ -6,6 +6,8 @@ import { ProdutoDTO } from '../../models/produto.dto';
 @Injectable()
 export class CartService{
 
+    qnt = 0;
+
     constructor(public storage: StorageService){
     }
 
@@ -30,6 +32,7 @@ export class CartService{
             cart.items.push({quantidade: 1, produto: produto});
         }
         this.storage.setCart(cart);
+        this.qnt = this.qnt + 1;
         return cart;
     }
 
@@ -40,6 +43,7 @@ export class CartService{
             cart.items.splice(position, 1);
         }
         this.storage.setCart(cart);
+        this.qnt = this.qnt - 1;
         return cart;
     }
 
